@@ -87,10 +87,7 @@ pub fn main() !void {
     mul_table = if (last_num1 > last_num2) try allocator.alloc(u32, last_num1 + 1) else try allocator.alloc(u32, last_num2 + 1);
     defer allocator.free(mul_table);
 
-    var i: usize = 0;
-    while (i < mul_table.len) : (i += 1) {
-        mul_table[i] = 0;
-    }
+    @memset(mul_table, 0);
     for (r_pointer) |num| {
         mul_table[num] += 1;
     }
